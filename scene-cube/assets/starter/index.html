@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="六处活着的像素生境。拖动魔方，让礁鲨、松林和月下的水草随着九格重新拼合。">
+  <title>六面引力 · Scene Cube</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="cube-state.js"></script>
+  <script defer src="ground-camera.js"></script>
+  <script defer src="ground-water.js"></script>
+  <script defer src="ground-valley.js"></script>
+  <script defer src="ground-night.js"></script>
+  <script defer src="ground-surfaces.js"></script>
+  <script defer src="cube-habitats.js"></script>
+  <script defer src="habitat-renderer.js"></script>
+  <script defer src="cube.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="masthead">
+      <div class="brand">
+        <span class="brand-grid" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <strong>SCENE CUBE</strong>
+        <span class="brand-cn">六面引力</span>
+      </div>
+      <button id="reset" class="text-button" type="button">复位 <span aria-hidden="true">↺</span></button>
+    </header>
+    <div class="workspace">
+      <section class="stage" aria-label="三维魔方舞台">
+        <canvas id="world" tabindex="0" aria-label="三维场景魔方。拖动格子拧层，拖动空白旋转视角。WASD 调整视角。"></canvas>
+        <div class="stage-caption" aria-hidden="true">
+          <span class="signal"></span><span id="stage-state">图案已对齐</span>
+        </div>
+        <p class="stage-help">拖动格子拧层 · 拖动空白换视角</p>
+        <div id="fallback" class="fallback" hidden>请在支持 WebGL 的浏览器中打开此预览。</div>
+      </section>
+      <aside class="inspector" aria-label="场景及转层控制">
+        <div class="intro">
+          <p class="kicker" id="scene-kind">像素生境</p>
+          <h1 id="scene-name">场景魔方</h1>
+          <p id="scene-description">九格拼成一块地面，树木、生物和水面随这块地面转向。</p>
+        </div>
+        <div id="scene-list" class="swatches" aria-label="巡视六面"></div>
+        <button id="close-view" class="close-view" type="button" aria-pressed="false">贴地看</button>
+        <hr>
+        <div class="control">
+          <label for="axis">转轴</label>
+          <select id="axis">
+            <option value="x">X · 左右</option>
+            <option value="y" selected>Y · 上下</option>
+            <option value="z">Z · 前后</option>
+          </select>
+          <label for="layer">层</label>
+          <select id="layer"><option value="-1">−1</option><option value="0">中层</option><option value="1" selected>+1</option></select>
+        </div>
+        <div class="turns">
+          <button id="negative" type="button" aria-label="负向旋转九十度">↶ −90°</button>
+          <button id="positive" type="button" aria-label="正向旋转九十度">↷ +90°</button>
+          <button id="undo" type="button" disabled>撤销</button>
+        </div>
+        <p id="feedback" role="status" class="feedback">可用任意转轴和层进行组合。</p>
+      </aside>
+    </div>
+    <footer class="transport">
+      <button id="play" type="button"><span aria-hidden="true">▶</span> 播放演示</button>
+      <label class="sr-only" for="seek">演示时间轴</label>
+      <input id="seek" type="range" min="0" max="19.2" step=".01" value="0">
+      <output id="time" for="seek">00.00 / 19.2</output>
+    </footer>
+  </main>
+</body>
+</html>

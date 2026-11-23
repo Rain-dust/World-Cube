@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scene Cube · 六面引力"
+  short_description: "Build living cube worlds with a local floor on each face"
+  default_prompt: "Use $scene-cube to create a twistable landscape cube where each face is a floor and its trees, buildings and falling leaves share that floor's gravity."
