@@ -25,4 +25,3 @@ jobs:
           node-version: ${{ matrix.node }}
           package-manager-cache: false
       - run: node --test
-        working-directory: scene-cube
